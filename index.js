@@ -1,7 +1,9 @@
+const express = require("express");
 const mongoose = require("mongoose");
 const app = require("./app");
 const PORT_SERVER = process.env.PORT || 3977;
 const { API_VERSION, IP_SERVER, PORT_DB } = require("./config");
+const routerApi = require('./src/routes');
 
 mongoose.connect(
     `mongodb://${IP_SERVER}:${PORT_DB}/proyect_db`,
@@ -19,4 +21,12 @@ mongoose.connect(
             });
         }
     }
-)
+);
+
+app.get('/', (req, res) => {
+    res.json({ message: 'Success' });
+});
+
+app.use(express.json());
+/* Permitir hacer el llamado de los request */
+routerApi(app);
