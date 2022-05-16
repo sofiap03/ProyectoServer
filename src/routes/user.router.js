@@ -3,6 +3,11 @@ const UserService = require('../services/user.service');
 const UserModel = require('../models/user.model');
 const UserRouter = express.Router();
 const service = new UserService();
+const UserController = require("../controllers/user")
+
+const api = express.Router();
+
+api.post("/signup", UserController.signUp);
 
 UserRouter.post('/user', async (req, res) => {
     try {
@@ -57,3 +62,4 @@ UserRouter.post('/user', async (req, res) => {
   });
 
 module.exports = UserRouter;
+module.exports = api;
