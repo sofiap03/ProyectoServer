@@ -8,6 +8,7 @@ const UserController = require("../controllers/user")
 const api = express.Router();
 
 api.post("/signup", UserController.signUp);
+api.post("/signIn", UserController.signIn);
 
 UserRouter.post('/user', async (req, res) => {
     try {
